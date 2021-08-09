@@ -9,6 +9,7 @@ import Grid from "./components/Grid/Grid";
 import Chart from "./components/Chart/Chart";
 
 import Schedule from "./components/Schedule/Schedule";
+import { TreeGrid } from "./components/TreeGrid/TreeGrid";
 
 //TODO Web Template Studio: Add routes for your new pages here.
 const App = () => {
@@ -18,6 +19,7 @@ const App = () => {
         <Switch>
           <Route exact path = "/" component = { Grid } />
           <Route path = "/Chart" component = { Chart } />
+          <Route path = "/TreeGrid" component = { TreeGrid } />
           <Route path = "/Schedule" component = { Schedule } />
         </Switch>
         <Footer />
