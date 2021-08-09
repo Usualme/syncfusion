@@ -15,7 +15,7 @@ const NavBar = () => {
           Syncfusion-test
         </Link>
         <div className="navbar-nav">
-          <Link className="nav-item nav-link active" to="Schedule">
+          <Link className="nav-item nav-link active" to="TreeGrid">
             Tree grid
           </Link>
           <Link className="nav-item nav-link active" to="/">

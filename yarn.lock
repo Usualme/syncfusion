@@ -1559,7 +1559,7 @@
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-file-utils/-/ej2-file-utils-19.2.44.tgz#ee2e3642eb1b9c969cb5f5541acd1bbebf1373a6"
   integrity sha512-STVMHeeCcrfmuTwsmYeeyM+8OgpGqXP0usLCEp5d39cl7Jzct8T3eqpMKLpvFzUNhknHI6r493JhOvCw/WoZbA==
 
-"@syncfusion/ej2-grids@19.2.51":
+"@syncfusion/ej2-grids@19.2.51", "@syncfusion/ej2-grids@~19.2.51":
   version "19.2.51"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-grids/-/ej2-grids-19.2.51.tgz#be7840f02bffa0a476d48febf6bebc5b7a4af1a6"
   integrity sha512-63N+pAodWqpxef8p5suVot4c6MLalpKi1YkHZ/U2ty5oe0zLwVNqEO9MaEbjrJGLmoqqSvAbD8fuL69T9sQiTg==
@@ -1664,6 +1664,15 @@
     "@syncfusion/ej2-react-base" "~19.2.50"
     "@syncfusion/ej2-schedule" "19.2.51"
 
+"@syncfusion/ej2-react-treegrid@^19.2.51":
+  version "19.2.51"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-treegrid/-/ej2-react-treegrid-19.2.51.tgz#e28d546a499a21ddeccb64d6938dae182f8f3e08"
+  integrity sha512-U98/gtKj0iRaY9uEjBS67wIUFAVZCInkQ65ab9Gbo9Iez1U913upcX5e2wdsIJKyliy/bxg5F6Mk7a0yNJ7Zmw==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.51"
+    "@syncfusion/ej2-react-base" "~19.2.50"
+    "@syncfusion/ej2-treegrid" "19.2.51"
+
 "@syncfusion/ej2-schedule@19.2.51":
   version "19.2.51"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-schedule/-/ej2-schedule-19.2.51.tgz#2ec6062aa56b037149e5dea01b66cdb7438ba6b9"
@@ -1694,6 +1703,16 @@
   integrity sha512-jT8YrUU2vKiHt9zYfX8/9Z0OTXTQHuO+cEmDEKtc6q57TH1cZAM0yowwKBur08MoDDDwEKTrUoTrZS8XOVHrLA==
   dependencies:
     "@syncfusion/ej2-base" "~19.2.44"
+
+"@syncfusion/ej2-treegrid@19.2.51":
+  version "19.2.51"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-treegrid/-/ej2-treegrid-19.2.51.tgz#f8dfa24d8c0f246de810928e09b7008ccf19b74a"
+  integrity sha512-yxlVAzDDhNCntyV8TD5MJuXF9B+xOrMgE64jVJnpzGXpUWXwdvk97dSNSfa/T8jTY/t5H26EDi2mGCQsOKIkKg==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.51"
+    "@syncfusion/ej2-data" "~19.2.48"
+    "@syncfusion/ej2-grids" "~19.2.51"
+    "@syncfusion/ej2-popups" "~19.2.48"
 
 "@types/babel__core@^7.1.0":
   version "7.1.15"

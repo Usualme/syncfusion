@@ -1,11 +1,12 @@
 {
-  "name": "Synfusion-test",
+  "name": "Syncfusion-test",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "@syncfusion/ej2-react-charts": "^19.2.44",
     "@syncfusion/ej2-react-grids": "^19.2.44",
     "@syncfusion/ej2-react-schedule": "^19.2.44",
+    "@syncfusion/ej2-react-treegrid": "^19.2.51",
     "bootstrap": "4.5.0",
     "classnames": "2.2.6",
     "cookie-parser": "1.4.5",
