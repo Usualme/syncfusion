@@ -1,0 +1,43 @@
+{
+  "name": "Synfusion-test",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@syncfusion/ej2-react-charts": "^19.2.44",
+    "@syncfusion/ej2-react-grids": "^19.2.44",
+    "@syncfusion/ej2-react-schedule": "^19.2.44",
+    "bootstrap": "4.5.0",
+    "classnames": "2.2.6",
+    "cookie-parser": "1.4.5",
+    "debug": "4.1.1",
+    "express": "4.17.1",
+    "fs-extra": "9.0.1",
+    "http-errors": "1.8.0",
+    "morgan": "1.10.0",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-router-dom": "5.2.0",
+    "react-scripts": "3.4.1",
+    "uuid": "8.2.0"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "devDependencies": {
+    "concurrently": "5.2.0"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "node ./buildScript",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject",
+    "lint": "eslint src/**/*.js src/**/*.jsx"
+  },
+  "proxy": "http://localhost:3001",
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
