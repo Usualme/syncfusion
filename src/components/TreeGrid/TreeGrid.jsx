@@ -27,31 +27,25 @@ export const TreeGrid = () => {
   const [filterMode, setFilterMode] = React.useState('Menu');
 
   return (
-    <div className="row no-gutters">
+    <div id="tree-grid" className="row no-gutters">
       <div className="col-lg-3 py-2">
         <div className="container">
           <FilterSelect value={filterMode} onChange={e => setFilterMode(e.target.value)}/>
         </div>
       </div>
       <div className="col-lg-9 control-section">
-      <div className="content-wrapper">
-        <div className='control-pane'>
-          <div className='control-section'>
-            <FilterEnhancer filterMode={filterMode}>
-              <ResizeEnhancer>
-                <PaginationEnhancer>
-                  <SortEnhancer>
-                    <ColumnMenuEnhancer>
-                      <BaseTreeGrid/>
-                    </ColumnMenuEnhancer>
-                  </SortEnhancer>
-                </PaginationEnhancer>
-              </ResizeEnhancer>
-            </FilterEnhancer>
-          </div>
-        </div>
+        <FilterEnhancer filterMode={filterMode}>
+          <ResizeEnhancer>
+            <PaginationEnhancer>
+              <SortEnhancer>
+                <ColumnMenuEnhancer>
+                  <BaseTreeGrid/>
+                </ColumnMenuEnhancer>
+              </SortEnhancer>
+            </PaginationEnhancer>
+          </ResizeEnhancer>
+        </FilterEnhancer>
       </div>
-    </div>
     </div>
   )
 };
