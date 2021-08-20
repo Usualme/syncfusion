@@ -3,5 +3,5 @@ import { createEnhancer } from './createEnhancer';
 
 export const PaginationEnhancer = createEnhancer({
   allowPaging: true,
-  pageSettings: { pageSize: 20 },
+  pageSettings: { pageSize: 20, pageSizes: true },
 }, Page);
