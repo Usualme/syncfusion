@@ -6,6 +6,7 @@ import { PaginationEnhancer } from './enhancers/PaginationEnhancer';
 import { SortEnhancer } from './enhancers/SortEnhancer';
 import { ResizeEnhancer } from './enhancers/ResizeEnhancer';
 import { FilterEnhancer } from './enhancers/FilterEnhancer';
+import { FilterSelect } from './FilterSelect';
 
 const BaseTreeGrid = ({ injectServices, ...otherProps }) => {
   return (
@@ -23,12 +24,20 @@ const BaseTreeGrid = ({ injectServices, ...otherProps }) => {
 };
 
 export const TreeGrid = () => {
+  const [filterMode, setFilterMode] = React.useState('Menu');
+
   return (
-    <div className="col-lg-9 control-section">
+    <div className="row no-gutters">
+      <div className="col-lg-3 py-2">
+        <div className="container">
+          <FilterSelect value={filterMode} onChange={e => setFilterMode(e.target.value)}/>
+        </div>
+      </div>
+      <div className="col-lg-9 control-section">
       <div className="content-wrapper">
         <div className='control-pane'>
           <div className='control-section'>
-            <FilterEnhancer>
+            <FilterEnhancer filterMode={filterMode}>
               <ResizeEnhancer>
                 <PaginationEnhancer>
                   <SortEnhancer>
@@ -42,6 +51,7 @@ export const TreeGrid = () => {
           </div>
         </div>
       </div>
+    </div>
     </div>
   )
 };

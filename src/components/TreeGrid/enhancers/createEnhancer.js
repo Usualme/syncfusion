@@ -3,8 +3,12 @@ import React from 'react'
 export const createEnhancer = (addProps, addServices) => {
   addServices = addServices ? (Array.isArray(addServices) ? addServices : [addServices]) : [];
 
-  if (!addProps || typeof addProps !== 'object') {
-    addProps = {};
+  let enhanceProps;
+  if (typeof addProps !== 'function') {
+    const passedProps = (!addProps || typeof addProps !== 'object') ? {} : addProps;
+    enhanceProps = () => passedProps;
+  } else {
+    enhanceProps = addProps;
   }
 
   return ({ children, injectServices, ...otherProps }) => {
@@ -15,7 +19,7 @@ export const createEnhancer = (addProps, addServices) => {
         return React.cloneElement(child, {
           ...otherProps,
           injectServices: [...injectServices, ...addServices],
-          ...addProps
+          ...enhanceProps(otherProps)
         });
       }
       return child;

@@ -1,7 +1,7 @@
 import { Filter } from '@syncfusion/ej2-react-treegrid';
 import { createEnhancer } from './createEnhancer';
 
-export const FilterEnhancer = createEnhancer({
+export const FilterEnhancer = createEnhancer(({ filterMode }) => ({
   allowFiltering: true,
-  filterSettings: { type: 'Menu' }
-}, Filter);
+  filterSettings: { type: filterMode }
+}), Filter);
