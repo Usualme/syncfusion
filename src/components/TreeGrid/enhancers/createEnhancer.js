@@ -24,6 +24,5 @@ export const createEnhancer = (addProps, addServices) => {
       }
       return child;
     });
-
   };
 };
