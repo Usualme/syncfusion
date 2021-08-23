@@ -7,20 +7,97 @@ import { SortEnhancer } from './enhancers/SortEnhancer';
 import { EditColumnsEnhancer } from './enhancers/EditColumnsEnhancer';
 import { FilterEnhancer } from './enhancers/FilterEnhancer';
 import { FilterSelect } from './FilterSelect';
-import { ColumnNamesInput } from './ColumnNamesInput';
+import { ColumnAttributesInput } from './ColumnAttributesInput';
 
-const BaseTreeGrid = ({ injectServices, columnNames, treeGridRef, ...otherProps }) => {
+const defaultStyle = {
+  fontFamily: 'sans-serif',
+  color: '#000'
+}
+
+const defaultColumnDefinitions = {
+  taskID: {
+    type: 'number',
+    headerText: 'Task Id',
+    width: '100',
+    textAlign: 'Right',
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  taskName: {
+    type: 'string',
+    headerText: 'Task Name',
+    width: '150',
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  startDate: {
+    type: 'date',
+    headerText: 'Start Date',
+    format: 'yMd',
+    width: '90',
+    textAlign: 'Right',
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  endDate: {
+    type: 'date',
+    headerText: 'End Date',
+    width: '90',
+    format: 'yMd',
+    textAlign: 'Right',
+    visible: false,
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  approved: {
+    type: 'boolean',
+    headerText: 'Approved',
+    width: '80',
+    displayAsCheckBox: true,
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  priority: {
+    type: 'number',
+    headerText: 'Priority',
+    width: '80',
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  progress: {
+    type: 'number',
+    headerText: 'Progress',
+    width: '80',
+    visible: false,
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+  duration: {
+    type: 'number',
+    headerText: 'Duration',
+    width: '80',
+    visible: false,
+    customAttributes: {
+      style: { ...defaultStyle }
+    }
+  },
+}
+
+const BaseTreeGrid = ({ injectServices, columns, treeGridRef, ...otherProps }) => {
   return (
     <TreeGridComponent dataSource={sampleData} childMapping='subtasks' treeColumnIndex={1} {...otherProps} ref={treeGridRef}>
       <ColumnsDirective>
-        <ColumnDirective field='taskID' headerText={columnNames.taskID} width='100' textAlign='Right' />
-        <ColumnDirective field='taskName' headerText={columnNames.taskName} width='150' />
-        <ColumnDirective field='startDate' headerText={columnNames.startDate} width='90' format='yMd' textAlign='Right'/>
-        <ColumnDirective field='endDate' headerText={columnNames.endDate} width='90' format='yMd' textAlign='Right' visible={false} />
-        <ColumnDirective field='approved' headerText={columnNames.approved} width='80' type='boolean' displayAsCheckBox={true} />
-        <ColumnDirective field='priority' headerText={columnNames.priority} width='80' />
-        <ColumnDirective field='progress' headerText={columnNames.progress} width='80' visible={false} />
-        <ColumnDirective field='duration' headerText={columnNames.duration} width='80' visible={false} />
+        {
+          Object.entries(columns)
+            .map(([field, columnProps]) => <ColumnDirective key={field} field={field} {...columnProps} />)
+        }
       </ColumnsDirective>
       {injectServices && <Inject services={injectServices}/>}
     </TreeGridComponent>
@@ -29,21 +106,12 @@ const BaseTreeGrid = ({ injectServices, columnNames, treeGridRef, ...otherProps 
 
 export const TreeGrid = () => {
   const [filterMode, setFilterMode] = React.useState('Menu');
-  const [columnNames, setColumnNames] = React.useState({
-    taskID: 'Task ID',
-    taskName: 'Task Name',
-    startDate: 'Start Date',
-    endDate: 'End Date',
-    approved: 'Approved',
-    priority: 'Priority',
-    progress: 'Progress',
-    duration: 'Duration',
-  });
+  const [columns, setColumns] = React.useState(defaultColumnDefinitions);
   const treeGridRef = React.useRef(null);
   React.useEffect(() => {
     // If column names changed - refresh them manually, because TreeGridComponent won't do it for us
     treeGridRef.current.refreshColumns();
-  }, [columnNames, treeGridRef])
+  }, [columns, treeGridRef])
 
   return (
     <div id="tree-grid" className="row no-gutters">
@@ -51,7 +119,7 @@ export const TreeGrid = () => {
         <div className="container">
           <FilterSelect value={filterMode} onChange={setFilterMode}/>
           <hr/>
-          <ColumnNamesInput value={columnNames} onChange={setColumnNames}/>
+          <ColumnAttributesInput value={columns} onChange={setColumns}/>
         </div>
       </div>
       <div className="col-lg-9 control-section">
@@ -60,7 +128,7 @@ export const TreeGrid = () => {
             <PaginationEnhancer>
               <SortEnhancer>
                 <ColumnMenuEnhancer>
-                  <BaseTreeGrid columnNames={columnNames} treeGridRef={treeGridRef}/>
+                  <BaseTreeGrid columns={columns} treeGridRef={treeGridRef}/>
                 </ColumnMenuEnhancer>
               </SortEnhancer>
             </PaginationEnhancer>
