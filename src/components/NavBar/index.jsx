@@ -18,7 +18,7 @@ const NavBar = () => {
           <Link className="nav-item nav-link active" to="TreeGrid">
             Tree grid
           </Link>
-          <Link className="nav-item nav-link active" to="/">
+          <Link className="nav-item nav-link active" to="Grid">
             Grid
           </Link>
           <Link className="nav-item nav-link active" to="Chart">

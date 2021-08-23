@@ -1,5 +1,5 @@
 import React from "react";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
@@ -17,7 +17,10 @@ const App = () => {
       <React.Fragment>
         <NavBar />
         <Switch>
-          <Route exact path = "/" component = { Grid } />
+          <Route exact path = "/">
+            <Redirect to = "/TreeGrid" />
+          </Route>
+          <Route path = "/Grid" component = { Grid } />
           <Route path = "/Chart" component = { Chart } />
           <Route path = "/TreeGrid" component = { TreeGrid } />
           <Route path = "/Schedule" component = { Schedule } />
