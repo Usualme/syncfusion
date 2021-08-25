@@ -1,13 +1,14 @@
-import React from 'react'
-import { TreeGridComponent, ColumnsDirective, ColumnDirective, Inject } from '@syncfusion/ej2-react-treegrid';
+import { ColumnDirective, ColumnsDirective, Inject, TreeGridComponent } from '@syncfusion/ej2-react-treegrid';
+import React from 'react';
+import { ColumnAttributesInput } from './ColumnAttributesInput';
 import { sampleData } from './data';
 import { ColumnMenuEnhancer } from './enhancers/ColumnMenuEnhancer';
+import { EditColumnsEnhancer } from './enhancers/EditColumnsEnhancer';
+import { EditRowsEnhancer } from './enhancers/EditRowsEnhancer';
+import { FilterEnhancer } from './enhancers/FilterEnhancer';
 import { PaginationEnhancer } from './enhancers/PaginationEnhancer';
 import { SortEnhancer } from './enhancers/SortEnhancer';
-import { EditColumnsEnhancer } from './enhancers/EditColumnsEnhancer';
-import { FilterEnhancer } from './enhancers/FilterEnhancer';
 import { FilterSelect } from './FilterSelect';
-import { ColumnAttributesInput } from './ColumnAttributesInput';
 
 const defaultStyle = {
   fontFamily: 'sans-serif',
@@ -128,7 +129,9 @@ export const TreeGrid = () => {
             <PaginationEnhancer>
               <SortEnhancer>
                 <ColumnMenuEnhancer>
-                  <BaseTreeGrid columns={columns} treeGridRef={treeGridRef}/>
+                  <EditRowsEnhancer treeGridRef={treeGridRef}>
+                    <BaseTreeGrid columns={columns} treeGridRef={treeGridRef}/>
+                  </EditRowsEnhancer>
                 </ColumnMenuEnhancer>
               </SortEnhancer>
             </PaginationEnhancer>
