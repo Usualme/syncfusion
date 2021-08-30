@@ -2,7 +2,6 @@ import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import "./App.css";
 import NavBar from "./components/NavBar";
-import Footer from "./components/Footer";
 
 import Grid from "./components/Grid/Grid";
 
@@ -25,7 +24,6 @@ const App = () => {
           <Route path = "/TreeGrid" component = { TreeGrid } />
           <Route path = "/Schedule" component = { Schedule } />
         </Switch>
-        <Footer />
       </React.Fragment>
     );
 }
