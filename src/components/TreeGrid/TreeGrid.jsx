@@ -6,6 +6,7 @@ import { ColumnMenuEnhancer } from './enhancers/ColumnMenuEnhancer';
 import { EditColumnsEnhancer } from './enhancers/EditColumnsEnhancer';
 import { EditRowsEnhancer } from './enhancers/EditRowsEnhancer';
 import { FilterEnhancer } from './enhancers/FilterEnhancer';
+import { ScrollEnhancer } from './enhancers/ScrollEnhancer';
 import { SortEnhancer } from './enhancers/SortEnhancer';
 import { FilterSelect } from './FilterSelect';
 
@@ -127,9 +128,11 @@ export const TreeGrid = () => {
           <EditColumnsEnhancer>
               <SortEnhancer>
                 <ColumnMenuEnhancer>
-                  <EditRowsEnhancer treeGridRef={treeGridRef}>
-                    <BaseTreeGrid columns={columns} treeGridRef={treeGridRef}/>
-                  </EditRowsEnhancer>
+                  <ScrollEnhancer>
+                    <EditRowsEnhancer treeGridRef={treeGridRef}>
+                      <BaseTreeGrid columns={columns} treeGridRef={treeGridRef}/>
+                    </EditRowsEnhancer>
+                  </ScrollEnhancer>
                 </ColumnMenuEnhancer>
               </SortEnhancer>
           </EditColumnsEnhancer>

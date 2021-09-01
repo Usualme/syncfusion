@@ -3,18 +3,8 @@
 }
 
 #tree-grid .control-section,
-#tree-grid .e-treegrid,
-#tree-grid .e-treegrid .e-grid,
-#tree-grid .e-treegrid .e-gridcontent
+#tree-grid .e-treegrid
 {
   height: 100%;
-}
-
-#tree-grid .e-treegrid .e-grid {
-  display: grid;
-  grid-template-rows: fit-content(100%) 1fr 49px;
-}
-#tree-grid .e-treegrid .e-content {
-  overflow: auto;
-  height: 100%!important;
+  overflow: hidden;
 }
