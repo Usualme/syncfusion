@@ -1,4 +1,18 @@
-import React from 'react'
+import React from 'react';
+
+export const mergeToArray = (...args) => {
+  const result = [];
+  for (const probablyArray of args) {
+    if (!probablyArray) continue;
+
+    if (Array.isArray(probablyArray)) {
+      result.push(...probablyArray);
+    } else {
+      result.push(probablyArray);
+    }
+  }
+  return result;
+};
 
 export const createEnhancer = (addProps, addServices) => {
   addServices = addServices ? (Array.isArray(addServices) ? addServices : [addServices]) : [];
@@ -12,14 +26,12 @@ export const createEnhancer = (addProps, addServices) => {
   }
 
   return ({ children, injectServices, ...otherProps }) => {
-    injectServices = injectServices ? (Array.isArray(injectServices) ? injectServices : [injectServices]) : [];
-
     return React.Children.map(children, child => {
       if (React.isValidElement(child)) {
         return React.cloneElement(child, {
           ...otherProps,
-          injectServices: [...injectServices, ...addServices],
-          ...enhanceProps(otherProps)
+          ...enhanceProps(otherProps),
+          injectServices: mergeToArray(injectServices, addServices)
         });
       }
       return child;

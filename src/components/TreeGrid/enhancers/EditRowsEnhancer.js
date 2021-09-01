@@ -1,15 +1,15 @@
 import { ContextMenu, Edit, RowDD } from '@syncfusion/ej2-react-treegrid';
 import { useRef } from 'react';
-import { createEnhancer } from './createEnhancer';
+import { createEnhancer, mergeToArray } from './createEnhancer';
 
 const COPY_COLUMNS          = 'copy_columns';
 const CUT_COLUMNS           = 'cut_columns';
 const PASTE_COLUMNS_ABOVE   = 'paste_columns_above';
+const PASTE_COLUMNS_APPEND  = 'paste_columns_append';
 const PASTE_COLUMNS_BELOW   = 'paste_columns_below';
 const PASTE_COLUMNS_PREPEND = 'paste_columns_prepend';
-const PASTE_COLUMNS_APPEND  = 'paste_columns_append';
 
-export const EditRowsEnhancer = createEnhancer(({ treeGridRef }) => {
+export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems }) => {
   const clipboard = useRef([]);
 
   const copyRows = (e) => {
@@ -130,7 +130,8 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef }) => {
       allowEditing: true,
       mode: 'Row'
     },
-    contextMenuItems: [
+    contextMenuItems: mergeToArray(
+      contextMenuItems,
       'AutoFit',
       'AutoFitAll',
       'SortAscending',
@@ -167,7 +168,7 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef }) => {
           },
         ]
       }
-    ],
+    ),
     contextMenuClick
   };
 }, [ContextMenu, RowDD, Edit]);
