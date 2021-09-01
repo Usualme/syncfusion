@@ -6,7 +6,6 @@ import { ColumnMenuEnhancer } from './enhancers/ColumnMenuEnhancer';
 import { EditColumnsEnhancer } from './enhancers/EditColumnsEnhancer';
 import { EditRowsEnhancer } from './enhancers/EditRowsEnhancer';
 import { FilterEnhancer } from './enhancers/FilterEnhancer';
-import { PaginationEnhancer } from './enhancers/PaginationEnhancer';
 import { SortEnhancer } from './enhancers/SortEnhancer';
 import { FilterSelect } from './FilterSelect';
 
@@ -126,7 +125,6 @@ export const TreeGrid = () => {
       <div className="col-lg-9 control-section">
         <FilterEnhancer filterMode={filterMode}>
           <EditColumnsEnhancer>
-            <PaginationEnhancer>
               <SortEnhancer>
                 <ColumnMenuEnhancer>
                   <EditRowsEnhancer treeGridRef={treeGridRef}>
@@ -134,7 +132,6 @@ export const TreeGrid = () => {
                   </EditRowsEnhancer>
                 </ColumnMenuEnhancer>
               </SortEnhancer>
-            </PaginationEnhancer>
           </EditColumnsEnhancer>
         </FilterEnhancer>
       </div>
