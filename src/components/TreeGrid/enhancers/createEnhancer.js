@@ -14,6 +14,21 @@ export const mergeToArray = (...args) => {
   return result;
 };
 
+export const mergeToFunction = (...fns) => {
+  let result = () => {};
+
+  for (const fn of fns) {
+    if (typeof fn !== 'function') continue;
+    let prevFn = result;
+    result = (...args) => {
+      prevFn(...args);
+      fn(...args);
+    };
+  }
+
+  return result;
+};
+
 export const createEnhancer = (addProps, addServices) => {
   addServices = addServices ? (Array.isArray(addServices) ? addServices : [addServices]) : [];
 

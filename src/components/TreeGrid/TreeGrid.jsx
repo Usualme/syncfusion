@@ -8,7 +8,6 @@ import { EditRowsEnhancer } from './enhancers/EditRowsEnhancer';
 import { FilterEnhancer } from './enhancers/FilterEnhancer';
 import { ScrollEnhancer } from './enhancers/ScrollEnhancer';
 import { SortEnhancer } from './enhancers/SortEnhancer';
-import { FilterSelect } from './FilterSelect';
 
 const defaultStyle = {
   fontFamily: 'sans-serif',
@@ -106,7 +105,6 @@ const BaseTreeGrid = ({ injectServices, columns, treeGridRef, ...otherProps }) =
 };
 
 export const TreeGrid = () => {
-  const [filterMode, setFilterMode] = React.useState('Menu');
   const [columns, setColumns] = React.useState(defaultColumnDefinitions);
   const treeGridRef = React.useRef(null);
   React.useEffect(() => {
@@ -118,13 +116,11 @@ export const TreeGrid = () => {
     <div id="tree-grid" className="row no-gutters">
       <div className="col-lg-3 py-2">
         <div className="container">
-          <FilterSelect value={filterMode} onChange={setFilterMode}/>
-          <hr/>
           <ColumnAttributesInput value={columns} onChange={setColumns}/>
         </div>
       </div>
       <div className="col-lg-9 control-section">
-        <FilterEnhancer filterMode={filterMode}>
+        <FilterEnhancer>
           <EditColumnsEnhancer>
               <SortEnhancer>
                 <ColumnMenuEnhancer>
