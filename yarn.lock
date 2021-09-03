@@ -1495,6 +1495,13 @@
   dependencies:
     "@syncfusion/ej2-icons" "~19.2.55"
 
+"@syncfusion/ej2-base@~19.2.57":
+  version "19.2.57"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-base/-/ej2-base-19.2.57.tgz#6b3ec900dcc8f8b80fc33a16c31885ff7da979be"
+  integrity sha512-ZpUxtOzlVONZI9kFxe9uIpJylptwxSPjVjB57wYhiKeRB5PEWSFsKBfsGMxt6DqPpVy8jUA5DIC8yY8CdNK31A==
+  dependencies:
+    "@syncfusion/ej2-icons" "~19.2.55"
+
 "@syncfusion/ej2-buttons@~19.2.47":
   version "19.2.47"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-buttons/-/ej2-buttons-19.2.47.tgz#fd4c4f981739a25736da5c7ce7c580a8eebd3aaf"
@@ -1651,6 +1658,14 @@
   dependencies:
     "@syncfusion/ej2-compression" "~19.2.44"
 
+"@syncfusion/ej2-popups@19.2.59":
+  version "19.2.59"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-popups/-/ej2-popups-19.2.59.tgz#12df6b05147fabd1ddabe456432dab36ad0140fd"
+  integrity sha512-BYxDEKwJVWdkuxT/Y+hMwyuFsLKRYWbzPhupJCwkptdTILS3cxPNdj30D74VFxh1uIsTlMs5XiNVfeBpWMgn+Q==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.57"
+    "@syncfusion/ej2-buttons" "~19.2.55"
+
 "@syncfusion/ej2-popups@~19.2.44", "@syncfusion/ej2-popups@~19.2.46", "@syncfusion/ej2-popups@~19.2.48":
   version "19.2.48"
   resolved "https://registry.yarnpkg.com/@syncfusion/ej2-popups/-/ej2-popups-19.2.48.tgz#660607454bf944b65ec70cad1ea821eb9ba16508"
@@ -1706,6 +1721,15 @@
   dependencies:
     "@syncfusion/ej2-base" "~19.2.55"
     "@syncfusion/ej2-inputs" "19.2.55"
+    "@syncfusion/ej2-react-base" "~19.2.55"
+
+"@syncfusion/ej2-react-popups@^19.2.59":
+  version "19.2.59"
+  resolved "https://registry.yarnpkg.com/@syncfusion/ej2-react-popups/-/ej2-react-popups-19.2.59.tgz#c6c6b476d4b2d296a2640591c9701aed4887c291"
+  integrity sha512-nFl4Gji+6PU1gSuE0jWcoZe/DYywNY3CUJgpT8oUhHROe676MrY16d3srEp338mJPmlzK6R/kG8DQSbhtCTLgQ==
+  dependencies:
+    "@syncfusion/ej2-base" "~19.2.57"
+    "@syncfusion/ej2-popups" "19.2.59"
     "@syncfusion/ej2-react-base" "~19.2.55"
 
 "@syncfusion/ej2-react-schedule@^19.2.44":

@@ -2,7 +2,7 @@
   overflow: hidden;
 }
 
-#tree-grid .control-section,
+#tree-grid,
 #tree-grid .e-treegrid
 {
   height: 100%;

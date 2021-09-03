@@ -6,6 +6,7 @@
     "@syncfusion/ej2-react-charts": "^19.2.44",
     "@syncfusion/ej2-react-grids": "^19.2.44",
     "@syncfusion/ej2-react-inputs": "^19.2.55",
+    "@syncfusion/ej2-react-popups": "^19.2.59",
     "@syncfusion/ej2-react-schedule": "^19.2.44",
     "@syncfusion/ej2-react-treegrid": "^19.2.51",
     "bootstrap": "4.5.0",
