@@ -1,15 +1,15 @@
 import { ContextMenu, Edit, RowDD } from '@syncfusion/ej2-react-treegrid';
 import { useRef } from 'react';
-import { createEnhancer, mergeToArray } from './createEnhancer';
+import { createEnhancer, mergeToArray, mergeToFunction } from './createEnhancer';
 
-const COPY_COLUMNS          = 'copy_columns';
-const CUT_COLUMNS           = 'cut_columns';
-const PASTE_COLUMNS_ABOVE   = 'paste_columns_above';
-const PASTE_COLUMNS_APPEND  = 'paste_columns_append';
-const PASTE_COLUMNS_BELOW   = 'paste_columns_below';
-const PASTE_COLUMNS_PREPEND = 'paste_columns_prepend';
+const COPY_ROWS          = 'copy_rows';
+const CUT_ROWS           = 'cut_rows';
+const PASTE_ROWS_ABOVE   = 'paste_rows_above';
+const PASTE_ROWS_APPEND  = 'paste_rows_append';
+const PASTE_ROWS_BELOW   = 'paste_rows_below';
+const PASTE_ROWS_PREPEND = 'paste_rows_prepend';
 
-export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems }) => {
+export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems, contextMenuClick }) => {
   const clipboard = useRef([]);
 
   const copyRows = (e) => {
@@ -55,16 +55,16 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems 
 
     const update = (list, index) => {
       switch (e.item.properties.id) {
-        case PASTE_COLUMNS_ABOVE:
+        case PASTE_ROWS_ABOVE:
           list.splice(index, 0, ...clipboard.current);
           return list;
-        case PASTE_COLUMNS_BELOW:
+        case PASTE_ROWS_BELOW:
           list.splice(index + 1, 0, ...clipboard.current);
           return list;
-        case PASTE_COLUMNS_PREPEND:
+        case PASTE_ROWS_PREPEND:
           list[index].subtasks = [...clipboard.current, ...(list[index].subtasks || [])];
           return list;
-        case PASTE_COLUMNS_APPEND:
+        case PASTE_ROWS_APPEND:
           list[index].subtasks = [...(list[index].subtasks || []), ...clipboard.current];
           return list;
         default:
@@ -104,16 +104,16 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems 
     tg.dataSource = updateEntries(tg.dataSource);
   };
 
-  const contextMenuClick = (e) => {
+  const editRowsContextMenuClick = (e) => {
     switch (e.item.properties.id) {
-      case COPY_COLUMNS:
+      case COPY_ROWS:
         return copyRows(e);
-      case CUT_COLUMNS:
+      case CUT_ROWS:
         return cutRows(e);
-      case PASTE_COLUMNS_ABOVE:
-      case PASTE_COLUMNS_BELOW:
-      case PASTE_COLUMNS_PREPEND:
-      case PASTE_COLUMNS_APPEND:
+      case PASTE_ROWS_ABOVE:
+      case PASTE_ROWS_BELOW:
+      case PASTE_ROWS_PREPEND:
+      case PASTE_ROWS_APPEND:
         return pasteRows(e);
       default:
         return;
@@ -139,12 +139,12 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems 
       {
         text: 'Copy',
         target: '.e-content',
-        id: COPY_COLUMNS
+        id: COPY_ROWS
       },
       {
         text: 'Cut',
         target: '.e-content',
-        id: CUT_COLUMNS
+        id: CUT_ROWS
       },
       {
         text: 'Paste',
@@ -152,23 +152,23 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems 
         items: [
           {
             text: 'Above',
-            id: PASTE_COLUMNS_ABOVE
+            id: PASTE_ROWS_ABOVE
           },
           {
             text: 'Below',
-            id: PASTE_COLUMNS_BELOW
+            id: PASTE_ROWS_BELOW
           },
           {
             text: 'Prepend',
-            id: PASTE_COLUMNS_PREPEND
+            id: PASTE_ROWS_PREPEND
           },
           {
             text: 'Append',
-            id: PASTE_COLUMNS_APPEND
+            id: PASTE_ROWS_APPEND
           },
         ]
       }
     ),
-    contextMenuClick
+    contextMenuClick: mergeToFunction(contextMenuClick, editRowsContextMenuClick)
   };
 }, [ContextMenu, RowDD, Edit]);
