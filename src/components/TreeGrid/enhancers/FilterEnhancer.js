@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Filter } from '@syncfusion/ej2-react-treegrid';
+import { ContextMenu, Filter } from '@syncfusion/ej2-react-treegrid';
 import { createEnhancer, mergeToArray, mergeToFunction } from './createEnhancer';
 
 const FILTER_MODE_FILTER_BAR          = 'filter_mode_filter_bar';
@@ -74,4 +74,4 @@ export const FilterEnhancer = createEnhancer(({ contextMenuItems, contextMenuCli
     contextMenuClick: mergeToFunction(contextMenuClick, filterModeContextMenuClick),
     contextMenuOpen:  mergeToFunction(contextMenuOpen, filterModeContextMenuOpen)
   };
-}, Filter);
+}, [ContextMenu, Filter]);
