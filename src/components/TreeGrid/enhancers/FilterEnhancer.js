@@ -15,6 +15,10 @@ const MENU_IS_SELECTED_ITEMS = [
   FILTER_MODE_MENU_SELECTED,
   FILTER_MODE_FILTER_BAR
 ];
+const ALL_ITEMS = [
+  ...FILTER_BAR_IS_SELECTED_ITEMS,
+  ...MENU_IS_SELECTED_ITEMS
+];
 
 export const FilterEnhancer = createEnhancer(({ contextMenuItems, contextMenuClick, contextMenuOpen }) => {
   const [filterMode, setFilterMode] = useState('Menu');
@@ -37,8 +41,11 @@ export const FilterEnhancer = createEnhancer(({ contextMenuItems, contextMenuCli
   const filterModeContextMenuOpen = (e) => {
     const items = e?.items;
     const contextMenu = items && items[0] && items[0].controlParent;
-    contextMenu.hideItems(filterMode === 'Menu' ? FILTER_BAR_IS_SELECTED_ITEMS : MENU_IS_SELECTED_ITEMS, true);
-    contextMenu.showItems(filterMode === 'Menu' ? MENU_IS_SELECTED_ITEMS : FILTER_BAR_IS_SELECTED_ITEMS, true);
+    contextMenu.hideItems(ALL_ITEMS, true);
+
+    if (!e.rowInfo.cell) {
+      contextMenu.showItems(filterMode === 'Menu' ? MENU_IS_SELECTED_ITEMS : FILTER_BAR_IS_SELECTED_ITEMS, true);
+    }
   };
 
   return {
