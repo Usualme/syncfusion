@@ -1,6 +1,5 @@
 import { ContextMenu, Edit, RowDD } from '@syncfusion/ej2-react-treegrid';
-import { useRef } from 'react';
-import useMedia from 'use-media';
+import { useEffect, useRef, useState } from 'react';
 import { createEnhancer, mergeToArray, mergeToFunction } from './createEnhancer';
 
 const COPY_ROWS          = 'copy_rows';
@@ -10,10 +9,26 @@ const PASTE_ROWS_APPEND  = 'paste_rows_append';
 const PASTE_ROWS_BELOW   = 'paste_rows_below';
 const PASTE_ROWS_PREPEND = 'paste_rows_prepend';
 
+function isMobileDevice (window) {
+  return /android|webos|iphone|ipad|ipod|blackberry|iemobile|opera mini|mobile/i.test(window.navigator.userAgent);
+}
+
+function useMobileDetect () {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setIsMobile(isMobileDevice(window));
+    }
+  }, []);
+
+  return isMobile;
+}
+
 export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems, contextMenuClick }) => {
   const clipboard = useRef([]);
 
-  const isDesktop = useMedia({ minWidth: '800px' });
+  const isMobile = useMobileDetect();
 
   const copyRows = (e) => {
     clipboard.current = treeGridRef.current.getSelectedRecords();
@@ -124,7 +139,9 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems,
   };
 
   return {
-    allowRowDragAndDrop: isDesktop,
+    // Disable DND for mobile devices
+    // See more: https://www.syncfusion.com/forums/166752/drag-and-drop-does-not-work-with-touch-event-touch-screen-devices
+    allowRowDragAndDrop: !isMobile,
     selectionSettings: { type: 'Multiple', mode: 'Row' },
     copyHierarchyMode: 'None',
     editSettings: {
