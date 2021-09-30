@@ -47,29 +47,28 @@ export const FilterEnhancer = createEnhancer(({ contextMenuItems, contextMenuCli
     filterSettings: { type: filterMode },
     contextMenuItems: mergeToArray(
       contextMenuItems,
-      {
-        text: `Filter Mode`,
-        target: '.e-headercontent',
-        id: FILTER_MODE_PARENT,
-        items: [
-          {
-            text: `Menu`,
-            id: FILTER_MODE_MENU
-          },
-          {
-            text: `Menu ✓`,
-            id: FILTER_MODE_MENU_SELECTED
-          },
-          {
-            text: `Filter Bar`,
-            id: FILTER_MODE_FILTER_BAR
-          },
-          {
-            text: `Filter Bar ✓`,
-            id: FILTER_MODE_FILTER_BAR_SELECTED
-          }
-        ]
-      },
+      [
+        {
+          text: `Filter Mode: Menu`,
+          id: FILTER_MODE_MENU,
+          target: '.e-headercontent',
+        },
+        {
+          text: `Filter Mode: Menu ✓`,
+          id: FILTER_MODE_MENU_SELECTED,
+          target: '.e-headercontent',
+        },
+        {
+          text: `Filter Mode: Filter Bar`,
+          id: FILTER_MODE_FILTER_BAR,
+          target: '.e-headercontent',
+        },
+        {
+          text: `Filter Mode: Filter Bar ✓`,
+          id: FILTER_MODE_FILTER_BAR_SELECTED,
+          target: '.e-headercontent',
+        }
+      ]
     ),
     contextMenuClick: mergeToFunction(contextMenuClick, filterModeContextMenuClick),
     contextMenuOpen:  mergeToFunction(contextMenuOpen, filterModeContextMenuOpen)
