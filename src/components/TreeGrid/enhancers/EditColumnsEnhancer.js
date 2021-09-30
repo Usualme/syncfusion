@@ -137,7 +137,7 @@ export const EditColumnsEnhancer = createEnhancer(({ treeGridRef, additionalComp
     contextMenuItems: mergeToArray(
       contextMenuItems,
       {
-        text: 'Change Column Style',
+        text: 'Change Column Styles Or Name',
         target: '.e-headercontent',
         id: CHANGE_COLUMN_ATTRIBUTE
       }
