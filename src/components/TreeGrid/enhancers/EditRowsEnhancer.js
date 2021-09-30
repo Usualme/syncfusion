@@ -13,7 +13,7 @@ const PASTE_ROWS_PREPEND = 'paste_rows_prepend';
 export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems, contextMenuClick }) => {
   const clipboard = useRef([]);
 
-  const isDesktop = useMedia({ minWidth: '1000px' });
+  const isDesktop = useMedia({ minWidth: '800px' });
 
   const copyRows = (e) => {
     clipboard.current = treeGridRef.current.getSelectedRecords();
