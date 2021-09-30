@@ -6,7 +6,6 @@ const FILTER_MODE_FILTER_BAR          = 'filter_mode_filter_bar';
 const FILTER_MODE_FILTER_BAR_SELECTED = 'filter_mode_filter_bar__selected';
 const FILTER_MODE_MENU                = 'filter_mode_menu';
 const FILTER_MODE_MENU_SELECTED       = 'filter_mode_menu__selected';
-const FILTER_MODE_PARENT              = 'filter_mode_parent';
 
 const FILTER_BAR_IS_SELECTED_ITEMS = [
   FILTER_MODE_MENU,
