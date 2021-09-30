@@ -1,5 +1,6 @@
 import { ContextMenu, Edit, RowDD } from '@syncfusion/ej2-react-treegrid';
 import { useRef } from 'react';
+import useMedia from 'use-media';
 import { createEnhancer, mergeToArray, mergeToFunction } from './createEnhancer';
 
 const COPY_ROWS          = 'copy_rows';
@@ -11,6 +12,8 @@ const PASTE_ROWS_PREPEND = 'paste_rows_prepend';
 
 export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems, contextMenuClick }) => {
   const clipboard = useRef([]);
+
+  const isDesktop = useMedia({ minWidth: '1000px' });
 
   const copyRows = (e) => {
     clipboard.current = treeGridRef.current.getSelectedRecords();
@@ -121,8 +124,8 @@ export const EditRowsEnhancer = createEnhancer(({ treeGridRef, contextMenuItems,
   };
 
   return {
-    allowRowDragAndDrop: true,
-    selectionSettings: { type: 'Multiple', mode: 'Row', copyHierarchyMode: 'None' },
+    allowRowDragAndDrop: isDesktop,
+    selectionSettings: { type: 'Multiple', mode: 'Row' },
     copyHierarchyMode: 'None',
     editSettings: {
       allowAdding: true,
